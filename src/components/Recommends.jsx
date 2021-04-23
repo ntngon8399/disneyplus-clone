@@ -8,7 +8,6 @@ Recommends.propTypes = {};
 
 function Recommends(props) {
   const movies = useSelector(selectRecommend);
-  console.log(movies, ":🛢️");
 
   return (
     <Container>

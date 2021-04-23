@@ -47,11 +47,6 @@ function Home(props) {
         }
       });
 
-      console.log(recommends);
-      console.log(newDisneys);
-      console.log(originals);
-      console.log(trending);
-
       dispatch(
         setMovies({
           recommend: recommends,
