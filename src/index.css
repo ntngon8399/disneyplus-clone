@@ -7,7 +7,8 @@ html {
 }
 
 body {
-  background-color: transparent;
+  background-color: #040714;
+  position: relative;
 
   color: #f9f9f9;
   height: 100vh;

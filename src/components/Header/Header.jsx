@@ -1,19 +1,16 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
-import styled from "styled-components";
-import { auth, provider } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
 import {
   selectUserName,
   selectUserPhoto,
   setSignOutState,
   setUserLoginDetails,
-} from "../features/user/userSlice";
+} from "./../../features/user/userSlice";
+import { auth, provider } from "./../../firebase";
 
-Header.propTypes = {};
-
-function Header(props) {
+function Header() {
   const dispatch = useDispatch();
   const history = useHistory();
   const userName = useSelector(selectUserName);
@@ -66,7 +63,10 @@ function Header(props) {
       </Logo>
 
       {!userName ? (
-        <Login onClick={handleAuth}>Login</Login>
+        <NavRight>
+          <SignUpNow>Sign up now</SignUpNow>
+          <Login onClick={handleAuth}>Login</Login>
+        </NavRight>
       ) : (
         <>
           <NavMenu>
@@ -98,7 +98,8 @@ function Header(props) {
           <SignOut>
             <UserImg src={userPhoto} alt={userName} />
             <DropDown>
-              <span onClick={handleAuth}>Sign out</span>
+              {" "}
+              <span onClick={handleAuth}>Sign out</span>{" "}
             </DropDown>
           </SignOut>
         </>
@@ -198,7 +199,29 @@ const NavMenu = styled.div`
   }
 `;
 
+const NavRight = styled.div``;
+
+const SignUpNow = styled.a`
+  box-sizing: border-box;
+  background-color: #0063e5;
+  color: #f9f9f9;
+  padding: 8px 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.2s ease 0s;
+  font-weight: 400;
+  text-align: center;
+
+  &:hover {
+    background-color: #0483ee;
+    cursor: pointer;
+  }
+`;
+
 const Login = styled.a`
+  box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.6);
   padding: 8px 16px;
   text-transform: uppercase;
@@ -206,6 +229,8 @@ const Login = styled.a`
   border: 1px solid #f9f9f9;
   border-radius: 4px;
   transition: all 0.2s ease 0s;
+  font-weight: 400;
+  margin-left: 20px;
 
   &:hover {
     cursor: pointer;

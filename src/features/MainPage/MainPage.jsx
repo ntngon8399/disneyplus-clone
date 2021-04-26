@@ -1,19 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 
-function Login(props) {
+MainPage.propTypes = {};
+
+function MainPage(props) {
   return (
     <Container>
       <Content>
         <CTA>
           <CTALogoOne src="/images/cta-logo-one.svg" />
-          <SignUp>GET ALL THERE</SignUp>
+          <SignUp>GET THE DISNEY BUNDLE</SignUp>
           <Description>
-            Get Premier Access to Raya and the Last Dragon for an additional fee
-            with a Disney+ subscription. As of 03/26/21, the price of Disney+
-            and The Disney Bundle will increase by $1.
+            Stream now.
+            <a href="#term">Terms apply</a>
           </Description>
           <CTALogoTwo src="/images/cta-logo-two.png" />
+          <Price>
+            <a href="#sign-up">Sign up for Disney+ only.</a>
+            <p>$7.99/month</p>
+          </Price>
         </CTA>
         <BgImage />
       </Content>
@@ -72,10 +77,9 @@ const CTALogoOne = styled.img`
 `;
 
 const SignUp = styled.a`
-  font-weight: bold;
   color: #f9f9f9;
   background-color: #0063e5;
-  margin-bottom: 12px;
+  margin-bottom: 30px;
   width: 100%;
   letter-spacing: 1.5px;
   font-size: 18px;
@@ -89,11 +93,15 @@ const SignUp = styled.a`
 `;
 
 const Description = styled.p`
-  color: hsla(0, 0%, 95.3%, 1);
+  color: hsla(0, 0%, 75.3%, 0.8);
   font-size: 11px;
   margin: 0 0 24px;
   line-height: 1.5;
-  letter-spacing: 1.5px;
+  text-align: center;
+  a {
+    color: #f9f9f9;
+    margin-left: 5px;
+  }
 `;
 
 const CTALogoTwo = styled.img`
@@ -104,4 +112,20 @@ const CTALogoTwo = styled.img`
   width: 100%;
 `;
 
-export default Login;
+const Price = styled.div`
+  margin-bottom: 16px;
+  color: hsla(0, 0%, 75.3%, 0.8);
+  text-align: center;
+  a {
+    color: #f9f9f9;
+    font-size: 17.6px;
+    text-decoration: underline;
+  }
+  p {
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+    font-size: 1.1em;
+  }
+`;
+
+export default MainPage;

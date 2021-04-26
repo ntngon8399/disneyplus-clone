@@ -1,22 +1,21 @@
 /* eslint-disable default-case */
 /* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
+import React from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { setMovies } from "../features/movie/movieSlice";
-import { selectUserName } from "../features/user/userSlice";
-import db from "../firebase";
-import ImgSlider from "./ImgSlider";
-import NewDisney from "./NewDisney";
-import Originals from "./Originals";
-import Recommends from "./Recommends";
-import Trending from "./Trending";
-import Viewers from "./Viewers";
+import ImgSlider from "./components/ImgSlider/ImgSlider";
+import NewDisney from "./components/NewDisney/NewDisney";
+import Originals from "./components/Originals/Originals";
+import Recommends from "./components/Recommends/Recommends";
+import Trending from "./components/Trending/Trending";
+import Viewers from "./components/Viewers/Viewers";
+import db from "../../firebase";
+import { setMovies } from "../../features/movie/movieSlice";
+import { selectUserName } from "../../features/user/userSlice";
 
-Home.propTypes = {};
-
-function Home(props) {
+function Home() {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
 
@@ -88,5 +87,4 @@ const Container = styled.main`
     z-index: -1;
   }
 `;
-
 export default Home;

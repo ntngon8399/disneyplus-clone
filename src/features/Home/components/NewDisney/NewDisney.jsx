@@ -1,11 +1,15 @@
+import PropTypes from "prop-types";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { selectNewDisney } from "../features/movie/movieSlice";
-NewDisney.propTypes = {};
+import { selectNewDisney } from "../../../movie/movieSlice";
 
-function NewDisney(props) {
+NewDisney.propTypes = {
+  list: PropTypes.array,
+};
+
+function NewDisney({ list = [] }) {
   const movies = useSelector(selectNewDisney);
 
   return (
@@ -29,7 +33,6 @@ function NewDisney(props) {
 const Container = styled.div`
   padding: 0 0 26px;
 `;
-
 const Content = styled.div`
   display: grid;
   grid-gap: 25px;
@@ -40,7 +43,6 @@ const Content = styled.div`
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 `;
-
 const Wrap = styled.div`
   padding-top: 56.25%;
   border-radius: 10px;
@@ -51,6 +53,7 @@ const Wrap = styled.div`
   position: relative;
   transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   border: 3px solid rgba(249, 249, 249, 0.1);
+
   img {
     inset: 0px;
     display: block;
@@ -63,6 +66,7 @@ const Wrap = styled.div`
     z-index: 1;
     top: 0;
   }
+
   &:hover {
     box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px,
       rgb(0 0 0 / 72%) 0px 30px 22px -10px;

@@ -2,20 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectRecommend } from "../features/movie/movieSlice";
+import { selectTrending } from "./../../../movie/movieSlice";
 
-Recommends.propTypes = {};
+Trending.propTypes = {};
 
-function Recommends(props) {
-  const movies = useSelector(selectRecommend);
+function Trending(props) {
+  const movies = useSelector(selectTrending);
 
   return (
     <Container>
-      <h4>Recommend for You</h4>
+      <h4>Trending</h4>
       <Content>
         {movies &&
-          movies.map((movie, key) => (
-            <Wrap key={key}>
+          movies.map((movie, idx) => (
+            <Wrap key={idx}>
               {movie.id}
               <Link to={`/detail/` + movie.id}>
                 <img src={movie.cardImg} alt={movie.title} />
@@ -30,6 +30,7 @@ function Recommends(props) {
 const Container = styled.div`
   padding: 0 0 26px;
 `;
+
 const Content = styled.div`
   display: grid;
   grid-gap: 25px;
@@ -40,6 +41,7 @@ const Content = styled.div`
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 `;
+
 const Wrap = styled.div`
   padding-top: 56.25%;
   border-radius: 10px;
@@ -50,7 +52,6 @@ const Wrap = styled.div`
   position: relative;
   transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   border: 3px solid rgba(249, 249, 249, 0.1);
-
   img {
     inset: 0px;
     display: block;
@@ -63,7 +64,6 @@ const Wrap = styled.div`
     z-index: 1;
     top: 0;
   }
-
   &:hover {
     box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px,
       rgb(0 0 0 / 72%) 0px 30px 22px -10px;
@@ -72,4 +72,4 @@ const Wrap = styled.div`
   }
 `;
 
-export default Recommends;
+export default Trending;
